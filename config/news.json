@@ -1,0 +1,37 @@
+{
+  "feeds": [
+    { "name": "Finews.asia", "url": "https://www.finews.asia/?format=feed&type=rss" },
+    { "name": "Asian Private Banker", "url": "https://asianprivatebanker.com/feed/" }
+  ],
+  "maxAgeDays": 14,
+  "moveKeywords": "hire|hiring|appoint|join|names|named|taps|poach|depart|leaves|exit|promot|recruit|steps? down|retire|moves?\\b|moved|succeed|head of|chief|CEO|CIO|COO|managing director|veteran|ex-|defect|lures|adds|bolsters|reshuffle|overhaul|Movers",
+  "firmAliases": {
+    "BOS": "Bank of Singapore",
+    "JB": "Julius Baer",
+    "Julius Bär": "Julius Baer",
+    "J.P. Morgan PB": "J.P. Morgan",
+    "JPMorgan": "J.P. Morgan",
+    "JP Morgan": "J.P. Morgan",
+    "JPM": "J.P. Morgan",
+    "UBP": "Union Bancaire Privée",
+    "Union Bancaire Privee": "Union Bancaire Privée",
+    "CS": "Credit Suisse",
+    "MS": "Morgan Stanley",
+    "GS": "Goldman Sachs",
+    "StanChart": "Standard Chartered",
+    "SCB": "Standard Chartered",
+    "Citi": "Citibank",
+    "Citi Private Bank": "Citibank",
+    "HSBC Private Bank": "HSBC",
+    "HSBC Global Private Banking": "HSBC",
+    "Safra Sarasin": "J. Safra Sarasin",
+    "Bank J. Safra Sarasin": "J. Safra Sarasin",
+    "LO": "Lombard Odier",
+    "Pictet": "Banque Pictet & Cie",
+    "Pictet WM": "Banque Pictet & Cie",
+    "Pictet Wealth Management": "Banque Pictet & Cie",
+    "EdR": "Edmond de Rothschild",
+    "Indosuez": "CA Indosuez",
+    "Barclays Private Bank": "Barclays"
+  }
+}

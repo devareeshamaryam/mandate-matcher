@@ -1,0 +1,25 @@
+{
+  "name": "mandate-matcher",
+  "version": "1.0.0",
+  "description": "Tracks firms' regulated staff (joiners / leavers / revoked) across registers, stores them in Google Sheets and alerts Slack.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "run-once": "node src/index.js --once",
+    "search": "node src/cli/search.js",
+    "news": "node src/news/cli.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0",
+    "node-cron": "^3.0.3",
+    "playwright-core": "^1.64.0",
+    "zod": "^4.6.6"
+  }
+}
