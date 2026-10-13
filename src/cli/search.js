@@ -2,20 +2,24 @@
 //   npm run search -- "Barclays"                FCA firms (FRN)
 //   npm run search -- "John Smith" --individual FCA individuals
 //   npm run search -- "Julius Baer" --sfc       Hong Kong SFC firms (CE number)
+//   npm run search -- "Julius Baer" --mas       Singapore MAS Financial Institutions Directory (FID id)
 import 'dotenv/config';
 import { createFcaClient } from '../sources/fcaClient.js';
 import { createSfcSource } from '../sources/sfc.js';
+import { createMasSource } from '../sources/mas.js';
 
 const args = process.argv.slice(2);
 const individual = args.includes('--individual');
 const query = args.filter((a) => !a.startsWith('--')).join(' ');
 if (!query) {
-  console.error('Usage: npm run search -- "firm name" [--individual] [--sfc]');
+  console.error('Usage: npm run search -- "firm name" [--individual] [--sfc | --mas]');
   process.exit(1);
 }
 
 let rows;
-if (args.includes('--sfc')) {
+if (args.includes('--mas')) {
+  rows = (await createMasSource(process.env).search(query)).map((d) => ({ ref: d.id, name: d.name, licences: d.licences }));
+} else if (args.includes('--sfc')) {
   const items = await createSfcSource(process.env).search(query, individual ? 'individual' : 'corporation');
   rows = items.map((d) => ({
     ref: d.ceref,

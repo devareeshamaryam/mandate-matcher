@@ -71,7 +71,7 @@ DFSA needs a logged-in Windows desktop session while it runs, because a Chrome w
 
 Headlines are remembered in `data/news-seen.json`, so nothing is reported twice. Headlines that couldn't be classified are retried on the next run. To test without writing anything, run `npm run news` (or `npm run news -- --no-ai` to skip the API). Set `NEWS_ENABLED=false` to turn it off.
 
-MAS (Singapore) is not supported. Its register only lets you search one person by name or number, and every search is protected by Cloudflare Turnstile.
+MAS (Singapore) is covered through the **Financial Institutions Directory**: for each firm, the licence types and the **key personnel** MAS publishes (Chief Executive, Branch Manager, Head of Treasury and so on). Key personnel have no register ID, so a person is matched by name within the firm. Find a firm's id with `npm run search -- "Julius Baer" --mas`. The full Representatives Register is not automated: it only lets you search one person by name or number, and every search is protected by Cloudflare Turnstile.
 
 ## Adding more sources
 
@@ -86,7 +86,7 @@ Every source lives in `src/sources/` and exposes `fetchFirm(cfg)`, `fetchEmploye
 src/index.js           entry point and scheduler
 src/run.js             one run: fetch → diff → enrich → Sheets → Slack
 src/diff.js            added / revoked / changed logic
-src/sources/           fca (API), html (scraper)
+src/sources/           fca (API), sfc, fsra, dfsa, mas, html (scrapers)
 src/storage/state.js   local snapshot (data/state.json) used for diffing
 src/storage/sheets.js  Google Sheets writer
 src/notify/slack.js    Slack Block Kit message

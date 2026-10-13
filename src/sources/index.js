@@ -3,6 +3,7 @@ import { createHtmlSource } from './html.js';
 import { createSfcSource } from './sfc.js';
 import { createFsraSource } from './fsra.js';
 import { createDfsaSource } from './dfsa.js';
+import { createMasSource } from './mas.js';
 
 // Register new sources (APIs or scrapers) here.
 const factories = {
@@ -10,6 +11,7 @@ const factories = {
   sfc: createSfcSource,
   fsra: createFsraSource,
   dfsa: createDfsaSource,
+  mas: createMasSource,
   html: createHtmlSource,
 };
 
