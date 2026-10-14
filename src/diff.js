@@ -22,7 +22,13 @@ export function diffEmployees(previousById = {}, current = []) {
     if (!activeNow) {
       revoked.push({ ...emp, reason: `Status changed to "${emp.status}"` });
     } else if (prev.status !== emp.status || prev.roleCategory !== emp.roleCategory) {
-      changed.push({ ...emp, from: prev.status, to: emp.status });
+      // Show whichever field actually changed, so the alert never reads "Active -> Active".
+      const statusChanged = prev.status !== emp.status;
+      changed.push({
+        ...emp,
+        from: statusChanged ? prev.status : prev.roleCategory,
+        to: statusChanged ? emp.status : emp.roleCategory,
+      });
     }
   }
 

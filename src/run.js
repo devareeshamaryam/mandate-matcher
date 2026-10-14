@@ -35,7 +35,9 @@ export async function runOnce(env = process.env) {
           ...e,
           currentRoles: e.currentRoles || old?.currentRoles || '',
           previousFirms: e.previousFirms || old?.previousFirms || '',
-          roleCategory: old?.roleCategory && !e.currentRoles ? old.roleCategory : e.roleCategory,
+          // An enriched role (e.g. DFSA "Senior Manager") beats the list's generic label ("Authorised Individual").
+          roleCategory: old?.roleCategory && (old.enriched || !e.currentRoles) ? old.roleCategory : e.roleCategory,
+          enriched: old?.enriched || false,
           firstSeen: old?.firstSeen || runAt,
           lastSeen: runAt,
         };
@@ -49,7 +51,7 @@ export async function runOnce(env = process.env) {
         log(`  enriching ${targets.length} people`);
         for (const t of targets) {
           try {
-            Object.assign(t, await source.enrichEmployee(t));
+            Object.assign(t, await source.enrichEmployee(t), { enriched: true });
           } catch (err) {
             log(`  enrich failed for ${t.personId}: ${err.message}`);
           }
